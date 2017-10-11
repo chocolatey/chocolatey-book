@@ -1,23 +1,23 @@
-Setting up Chocolatey for Organizational Use
+# Setting up Chocolatey for Organizational Use
 
 While Chocolatey open source (FOSS) is a great solution for personal use due the ability to download and install packages from the Chocolatey public repository, organizations looking to leverage Chocolatey internally will likely want to take a different approach to using Chocolatey. Most of the reasons for this is gaining more control over how clients interact with packages, which will increase the security surrounding managing software. Organizations may also look to create their own Chocolatey packages, especially for software that is not found in the public repository, which therefore cannot be internalized to an internal feed. In terms of managing packages on organizational clients, organizations will want to use Chocolatey along with remote tools, such as SCCM, PowerShell, Puppet or Chef.
 
-Setting up Chocolatey clients
+# Setting up Chocolatey clients
 
 It is recommended that organizations using Chocolatey purchase a business license (C4B) in order to leverage the many features including but not limited to malware protection, CDN cache, and background mode.
 
-Using Chocolatey offline
+# Using Chocolatey offline
 
 One of the first tasks that an organization should do is create their own package repository. This quickly allows greater security and vetting of packages that Chocolatey clients will be installing. Although the Chocolatey public repository is moderated, it is not meant to be a completely trusted source of packages, thus organizations should look to host their own feed internally and remove the dependency on the public feed so that clients do not reach out to the internet for packages. There are several solutions for hosting your own feed for Chocolatey packages, documented here. 
 
 
-Creating your own packages 
+# Creating your own packages 
 
 The ability to create Chocolatey packages that only your organization uses, is one of the great features of Chocolatey. Depending on the complexity of the package, some can even be created to completion with one Chocolatey command; choco new. For packages that are more complex, users can leverage features such as providing other packages as dependencies, custom arguments for installation and PowerShell extensions.
 
-Internalizing (manual or otherwise)
+# Internalizing (manual or otherwise)
 
 One of the best features of the Chocolatey for Business license (C4B), is the ability to internalize public Chocolatey packages and host them on your own feed. This is done with the choco download –internalize command. The advantage to this is that organizations can save time creating their own packages for packages such as Google Chrome and Git 
 
-Managing Chocolatey with remote tools
+# Managing Chocolatey with remote tools
 
