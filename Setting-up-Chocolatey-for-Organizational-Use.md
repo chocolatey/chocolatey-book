@@ -15,7 +15,7 @@ If you are deploying Chocolatey in bulk it is recommended ?...
 
 One change to your Chocolatey client configuration you will likely want to make is adding a source to your internal feed in additional to removing the public Chocolatey feed as your default source. To add a source to your client you can use the choco source command:
 
-'choco source add --name='MyFeed' --source='https://yourfeed:443/chocolatey' --priority=0'
+'choco source add --name='MyFeed' --source='https://yourfeed:443/chocolatey' --priority=0'<br>
 'choco source remove --name=chocolatey'
 
 Here I added my hosted feed named 'MyFeed' as a source and removed the community feed. This means that by default clients will not attempt to download and install packages from the community feed unless specified.
