@@ -5,9 +5,13 @@ While Chocolatey open source (FOSS) is a great solution for personal use due the
 ## Setting up Chocolatey clients
 
 The minimal requirements for installing Chocolatey on a client computer is as follows:
-- Windows 7+/Windows Server 2003+
-- PowerShell v2+
-- .Net Framework 4.0+
+* Windows 7+/Windows Server 2003+
+* PowerShell v2+
+* .Net Framework 4.0+
+
+In this example, I want to install Chocolatey with PowerShell. I can simple run:
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 If you are deploying Chocolatey in bulk it is recommended ?...
 
@@ -15,8 +19,8 @@ If you are deploying Chocolatey in bulk it is recommended ?...
 
 One change to your Chocolatey client configuration you will likely want to make is adding a source to your internal feed in additional to removing the public Chocolatey feed as your default source. To add a source to your client you can use the choco source command:
 
-'choco source add --name='MyFeed' --source='https://yourfeed:443/chocolatey' --priority=0'<br>
-'choco source remove --name=chocolatey'
+* choco source add --name='MyFeed' --source='https://yourfeed:443/chocolatey' --priority=0<br>
+* choco source remove --name=chocolatey
 
 Here I added my hosted feed named 'MyFeed' as a source and removed the community feed. This means that by default clients will not attempt to download and install packages from the community feed unless specified.
 
@@ -36,15 +40,15 @@ The ability to create Chocolatey packages that only your organization uses, is o
 
 ## Internalizing packages from the community feed
 
-Many organizations choose to reconfigure public feed packages for their own use. This can be done manually with Chocolatey FOSS by downloading the package, unzipping its contents, downloading additional necessary resources (such as installers from their distribution points), editing the Chocolatey install script, packing it back up into a NuGet packages and finally pushing to your internal repository. 
+Many organizations choose to reconfigure public feed packages for their own use. This can be done manually with Chocolatey FOSS by downloading the package, unzipping its contents, downloading additional necessary resources (such as installers from their distribution points), editing the Chocolatey install script, packing it back up into a NuGet packages and finally pushing to your internal repository. Although, you can automate this with the Chocolatey for Business license:
 
-Here, I internalize the git package from the community repository:
+Here, I internalize the Google Chrome package from the community repository:
+'choco download googlechrome --internalize --source='chocolatey''
 
+Now I can push this package to my internal feed with the choco push command:
+'choco push googlechrome --source=http://myfeed/ --api-key='12345678''
 
+## Managing Chocolatey with remote tools
 
-Please note that the ability to internalize public Chocolatey packages and host them on your own feed can be done with the `choco download --internalize` command which is only available with Chocoaltey for Business. The advantage to this is that organizations can save time creating their own packages for packages such as Google Chrome and Git 
-
-# Managing Chocolatey with remote tools
-
-Once the Chocolatey client is deployed, it will likely be the goal for organizations to manage their Chocolatey clients via remote tools such as SCCM or PowerShell remoting.
+Once the Chocolatey client is deployed, it will likely be the goal for organizations to manage their Chocolatey clients via remote tools included but not limited to SCCM, Puppet, Chef or DSC. Regardless of what tool your organization uses, most popular tools are supported by Chocolatey as illustrated [here](https://chocolatey.org/docs/features-infrastructure-automation). 
 
