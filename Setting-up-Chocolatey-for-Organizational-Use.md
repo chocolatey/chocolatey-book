@@ -34,6 +34,12 @@ One of the first tasks that an organization should do is create their own packag
 
 There are several solutions for hosting your own feed for Chocolatey packages, documented [here](https://chocolatey.org/docs/how-to-host-feed). The two most simple would be either to have packages in a CIFS share or deploy the Chocolatey Simple Server. This will allow organizations to easily manage their own packages without any dependency on the public feed/internet access.
 
+Installing Chocolatey Server can be done with Chocolatey on a Windows Server:
+
+'choco install chocolatey.server'
+
+If you would like to further automate the setup of Chocolatey Server you can use the [Puppet module](https://github.com/chocolatey/puppet-chocolatey_server) as well.
+
 ## Creating your own packages 
 
 The ability to create Chocolatey packages that only your organization uses, is one of the great features of Chocolatey. Depending on the complexity of the package, some can even be created to completion with one Chocolatey command; choco new. For packages that are more complex, users can leverage features such as providing other packages as dependencies, custom arguments for installation and PowerShell extensions.
