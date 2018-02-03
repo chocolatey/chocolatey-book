@@ -13,7 +13,7 @@ In this example, I want to install Chocolatey with PowerShell. I can simple run:
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-If you would like to install from an internal source and remove the dependency on the internet, you can place the chocolatey.nupkg on an internal repository and use a script to fetch and install like so: (https://chocolatey.org/install#completely-offline-install). In addition, you can use [Puppet/Chef] (https://chocolatey.org/install#install-with-puppet) or with [fully offline] (https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet)
+If you would like to install from an internal source and remove the dependency on the internet, you can place the chocolatey.nupkg on an internal repository and use a script to fetch and install like so: (https://chocolatey.org/install#completely-offline-install). In addition, you can use [Puppet or Chef](https://chocolatey.org/install#install-with-puppet) or a [fully offline licensed version configuration](https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet).
 
 ### Additional configuration for clients
 
