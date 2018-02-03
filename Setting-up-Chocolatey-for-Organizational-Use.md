@@ -13,7 +13,7 @@ In this example, I want to install Chocolatey with PowerShell. I can simple run:
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-If you are deploying Chocolatey in bulk it is recommended ?...
+If you would like to install from an internal source and remove the dependency on the internet, you can place the chocolatey.nupkg on an internal repository and use a script to fetch and install like so: (https://chocolatey.org/install#completely-offline-install). In addition, you can use [Puppet/Chef] (https://chocolatey.org/install#install-with-puppet) or with [fully offline] (https://chocolatey.org/docs/installation-licensed#set-up-licensed-edition-with-puppet)
 
 ### Additional configuration for clients
 
@@ -24,7 +24,11 @@ One change to your Chocolatey client configuration you will likely want to make 
 
 Here I added my hosted feed named 'MyFeed' as a source and removed the community feed. This means that by default clients will not attempt to download and install packages from the community feed unless specified.
 
-Recommended additional configs for org use?
+Other recommended change would be:
+
+* cacheLocation should be set
+* useFipsCompliantChecksums should be enabled if an organization requires FIPS
+* commandExecutionTimeoutSeconds should be bumped up to at least 4 hours
 
 While Chocolatey FOSS is acceptable for organizational use, you can also purchase a business license (C4B) in order to leverage the many features including but not limited to malware protection, CDN cache, and background mode.
 
